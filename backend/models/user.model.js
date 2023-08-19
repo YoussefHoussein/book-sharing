@@ -1,5 +1,21 @@
 const mongoose = require("mongoose");
-const book = require('./book.model')
+
+const likeSchema = new mongoose.Schema({
+  user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+})
+
+const bookSchema = new mongoose.Schema({
+name: String,
+author: String,
+picture: String,
+review: String,
+likes : [likeSchema],
+})
+
+
 const followingSchema = new mongoose.Schema({
     followed: {
         type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +31,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   name: String,
   followings: [followingSchema],
-  books: [book.Schema],
+  books: [bookSchema],
 })
 
 const model = mongoose.model("User", userSchema)
