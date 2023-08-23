@@ -9,8 +9,8 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(cors())
 app.use(express.json())
 
-// const usersRoutes = require("./routes/user.route")
-// app.use("/users", usersRoutes)
+const usersRoutes = require("./routes/user.route")
+app.use("/users", usersRoutes)
 
 const authRoutes = require("./routes/auth.route")
 app.use("/auth", authRoutes)
