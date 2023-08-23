@@ -1,0 +1,29 @@
+.card-container{
+    width: 350px;
+    height: 200px;
+    position: relative;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+}
+.image-container{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: -20%;
+    top: -20%;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    background-size: cover;
+}
+.card-text{
+    position: absolute;
+    left: 45%;
+}
+.name{
+    top: 10%;
+}
+.author{
+    top: 45%;
+}
+.review{
+    top: 80%;
+}

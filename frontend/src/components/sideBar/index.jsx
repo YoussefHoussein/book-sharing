@@ -6,7 +6,7 @@ const SideBar = ({openProfile,openCreate}) => {
     <div className='sideBar flex center'>
       <div className='flex center'>
         <button className='profile-button' onClick={openProfile}>Your Profile</button>
-        <AiOutlinePlus className='pointer' onClick={handleCreate}/>
+        <AiOutlinePlus className='pointer' onClick={openCreate}/>
       </div>
     </div>
   )
