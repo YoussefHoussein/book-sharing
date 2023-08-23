@@ -8,9 +8,10 @@ const Home = () => {
   const [active,setActive]=useState(null)
   return (
     <div className='flex column'>
-        <Navbar name={"name"}/>
+        <div className='navbar-container flex center'>
+          <Navbar name={"name"}/></div>  
         <div className='body-container flex spaceBetween'>
-          <div className='sidebar-container flex'>
+          <div className='sidebar-container flex center'>
           <SideBar openProfile={() => setActive("profile")} openCreate={()=>setActive("create")}/>
           </div>
           <div className='profile-container flex center'>

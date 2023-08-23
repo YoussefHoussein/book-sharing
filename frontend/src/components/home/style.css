@@ -2,13 +2,20 @@
     width: 120px;
     height: 100vh;
     justify-content: flex-start;
+    position: fixed;
 }
 .profile-container{
     width: 90%;
-    height: 80vh;
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 60px;
 }
 .body-container{
     width: 100%;
-    height: 100vh;
-
+}
+.navbar-container{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 5;
 }

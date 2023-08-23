@@ -27,7 +27,6 @@ const shareBook = async (req,res) => {
 }
 const getMyBooks = async (req,res) => {
     const user = await User.findById(req.user._id);
-
     res.send(user.books)
 }
 

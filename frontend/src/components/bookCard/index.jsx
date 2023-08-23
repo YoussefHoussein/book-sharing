@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import './style.css'
-const BookCard = ({name,author,review,image}) => {
+const BookCard = ({name,author,review,picture}) => {
     const imageContainerRef = useRef(null);
 
     if (imageContainerRef.current) {
-        imageContainerRef.current.style.backgroundImage = `url(${image})`;
+        imageContainerRef.current.style.backgroundImage = `url(${picture})`;
       }
   return (
     <div className='card-container'>
