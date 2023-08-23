@@ -14,11 +14,13 @@
     width: 100%;
     height: 40%;
     align-items: center;
+    overflow-y: auto;
 }
 .followings{
     width: 100%;
     height: 40%;
     align-items: center;
+    overflow-y: auto;
 }
 .user-bar-sidebar{
     width: 100%;
