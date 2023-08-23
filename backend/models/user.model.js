@@ -10,7 +10,7 @@ const likeSchema = new mongoose.Schema({
 const bookSchema = new mongoose.Schema({
 name: String,
 author: String,
-picture: Text,
+picture: String,
 review: String,
 likes : [likeSchema],
 })

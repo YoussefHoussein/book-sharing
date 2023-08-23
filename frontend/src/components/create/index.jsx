@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import './style.css'
+import axios from 'axios'
 const Create = () => {
     const [data ,setData] = useState({
         name : "",
@@ -51,8 +52,34 @@ const Create = () => {
             handleInsert()
         }
     }
-    const handleInsert = () => {
-
+    const handleInsert = async () => {
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            }
+        };
+        const dataToInsert = {
+            name: data.name,
+            author: data.author,
+            review: data.review,
+            picture: selectedImage
+        }
+        try{
+            const response = await axios.post("http://127.0.0.1:8000/books/insertbook",dataToInsert,config)
+            setData({
+                name:"",
+                author: "",
+                review: ""
+            })
+            setSelectedImage(null)
+            if (imageContainerRef.current) {
+                imageContainerRef.current.style.backgroundImage = `url(${null})`;
+              }
+        }
+        catch(err){
+            SetError(err)
+        }
+        
     }
   return (
     <div className='create-container flex column spaceEvenly'>
