@@ -84,6 +84,9 @@
     height: 5px;
 }
 
+.pointer {
+    cursor: pointer;
+}
 button{
     cursor: pointer;
 }
