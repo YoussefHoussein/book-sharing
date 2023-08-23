@@ -1,10 +1,10 @@
 const express = require("express")
 const app = express();
 require("dotenv").config()
-
+const cors = require("cors")
 const mongoDb = require("./configs/mongodb.connection");
 
-
+app.use(cors())
 app.use(express.json())
 
 // const usersRoutes = require("./routes/user.route")
