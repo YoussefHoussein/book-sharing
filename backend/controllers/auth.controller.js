@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 const User = require("../models/user.model")
+require('dotenv').config();
 
 const login = async (req, res)=>{
     const {email: login, password} = req.body;
@@ -10,8 +11,7 @@ const login = async (req, res)=>{
     if(!isValid) return res.status(404).send({message: "email/password incorrect"});
 
     const {password: hashedPassword, name, email, _id, ...userInfo} = user.toJSON();
-    const token = jwt.sign({name, email, _id}, process.env.JWT_SECRET)
-
+    const token = jwt.sign({name, email, _id}, process.env.SERCRET_KEY)
     res.send({
         token,
         user: userInfo
@@ -20,11 +20,12 @@ const login = async (req, res)=>{
 }
 
 const register = async(req, res)=>{
-    const {password} = req.body
+    const {password,email,name} = req.body
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
-        ...req.body,
+        name:name,
+        email: email,
         password: hashedPassword
     });
     console.log(user);
@@ -33,6 +34,7 @@ const register = async(req, res)=>{
     res.send(user)
     
 }
+
 
 const verify = (_, res)=>{
     res.send("Verfied")
