@@ -5,6 +5,7 @@ import {AiOutlinePlus} from "react-icons/ai"
 import UserBar from '../userBar'
 const SideBar = ({openProfile,openCreate}) => {
   const [users_names,setUserName] = useState([])
+  const [following_names,setFollowingName] = useState([])
   useEffect(()=>{
     const getUsers = async () => {
       try{
@@ -14,7 +15,9 @@ const SideBar = ({openProfile,openCreate}) => {
             }
         };
           const response = await axios.post('http://127.0.0.1:8000/users/getAllUsers',null,config)
+          const response1 = await axios.post('http://127.0.0.1:8000/users/getFollowings',null,config)
           setUserName(response.data)
+          setFollowingName(response1.data)
       }
       catch(err){
         console.log(err)
@@ -22,7 +25,7 @@ const SideBar = ({openProfile,openCreate}) => {
       
     }
     getUsers()
-  })
+  },[])
   return (
     <div className='sideBar flex column center spaceEvenly'>
       <div className='flex center'>
@@ -39,9 +42,12 @@ const SideBar = ({openProfile,openCreate}) => {
       </div>
       <div className="followings flex column">
         <div className='header-section'>Following</div>
-        <div className="user-bar-sidebar flex center">
-          <UserBar name={"Hi"} following={true}/>
-        </div>
+        {
+        following_names.map((user) => (
+            <div key={user._id} className="user-bar-sidebar flex center">
+              <UserBar name={user.name} following={true} />
+            </div>
+          ))}
       </div>
     </div>
   )
