@@ -14,4 +14,17 @@ const getUsers = async (req,res) => {
     }
 }
 
-module.exports = {getUsers}
+const getFollowing = async (req,res)=>{
+    try{
+        const user = await User.findById(req.user._id);
+        const followings = user.followings
+        console.log(followings)
+        res.send(followings)
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+}
+
+module.exports = {getUsers,getFollowing}

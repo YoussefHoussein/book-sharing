@@ -4,5 +4,6 @@ const userController = require("../controllers/user.controller");
 const authMiddleware = require("../middelwares/auth.middleware")
 
 router.post("/getAllUsers",authMiddleware, userController.getUsers)
+router.post("/getFollowings",authMiddleware, userController.getFollowing)
 
 module.exports = router;
