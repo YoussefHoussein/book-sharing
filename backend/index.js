@@ -13,8 +13,8 @@ app.use(express.json())
 const authRoutes = require("./routes/auth.route")
 app.use("/auth", authRoutes)
 
-// const bookRoutes = require("./routes/book.route")
-// app.use("/posts", bookRoutes)
+const bookRoutes = require("./routes/book.route")
+app.use("/books", bookRoutes)
 
 app.listen(8000, (err) => {
   if (err) {
