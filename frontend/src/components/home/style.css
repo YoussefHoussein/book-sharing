@@ -1,0 +1,8 @@
+.sidebar-container{
+    width: 100px;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+}
