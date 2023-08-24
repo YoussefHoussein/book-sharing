@@ -50,6 +50,7 @@ const Profile = ({user_id = null}) => {
        {data.map(book => (
         <BookCard
           key={book.id}
+          id={book._id}
           name={book.name}
           author={book.author}
           review={book.review}
