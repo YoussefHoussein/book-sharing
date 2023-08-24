@@ -1,5 +1,4 @@
 const User = require("../models/user.model")
-
 const shareBook = async (req,res) => {
     try{
         const {name,author,picture,review} = req.body;
@@ -58,5 +57,33 @@ const like = async (req,res) => {
 
 }
 
+const search = async (req,res)=>{
+    const text = req.body.text;
 
-module.exports = {shareBook,getMyBooks,like}
+    try {
+        const search_results = await User.find({
+          $or: [
+            { 'books.name': { $regex: text, $options: 'i' } }, 
+            { 'books.author': { $regex: text, $options: 'i' } }, 
+          ],
+        });
+    
+       
+        const matched_books = search_results.flatMap(user =>
+          user.books.filter(book =>
+            book.name.match(new RegExp(text, 'i')) ||
+            book.author.match(new RegExp(text, 'i'))
+          )
+        );
+    
+        res.send(matched_books);
+        console.log(matched_books)
+      } 
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+}
+
+
+module.exports = {shareBook,getMyBooks,like,search}
