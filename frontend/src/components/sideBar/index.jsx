@@ -26,6 +26,26 @@ const SideBar = ({openProfile,openCreate}) => {
     }
     getUsers()
   },[])
+
+  const handleFollowToggle = (userId) => {
+    const userToToggle = users_names.find(user => user._id === userId);
+
+    if (userToToggle) {
+      const updatedUsers = users_names.filter(user => user._id !== userId);
+      const updatedFollowing = [...following_names, userToToggle];
+      setUserName(updatedUsers);
+      setFollowingName(updatedFollowing);
+    } else {
+      
+      const updatedFollowing = following_names.filter(user => user._id !== userId);
+      const updatedUsers = [...users_names,userToToggle]
+      setFollowingName(updatedFollowing);
+      setUserName(updatedUsers)
+
+    }
+
+  };
+
   return (
     <div className='sideBar flex column center spaceEvenly'>
       <div className='flex center'>
@@ -36,7 +56,7 @@ const SideBar = ({openProfile,openCreate}) => {
         {
         users_names.map((user) => (
             <div key={user._id} className="user-bar-sidebar flex center">
-              <UserBar name={user.name} following={false} />
+              <UserBar id={user._id} name={user.name} following={false} onFollowToggle={()=>handleFollowToggle(user._id)}/>
             </div>
           ))}
       </div>
@@ -45,7 +65,7 @@ const SideBar = ({openProfile,openCreate}) => {
         {
         following_names.map((user) => (
             <div key={user._id} className="user-bar-sidebar flex center">
-              <UserBar name={user.name} following={true} />
+              <UserBar id={user._id} name={user.name} following={true} onFollowToggle={()=>handleFollowToggle(user._id)}/>
             </div>
           ))}
       </div>
