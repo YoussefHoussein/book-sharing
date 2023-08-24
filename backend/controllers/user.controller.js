@@ -5,7 +5,6 @@ const getUsers = async (req,res) => {
         const user = await User.findById(req.user._id);
         const followings = user.followings
         const users = await User.find({ _id: { $nin: [...followings, user._id] } });
-        console.log(users)
         res.send(users)
     }
     catch (error) {
@@ -18,7 +17,6 @@ const getFollowing = async (req,res)=>{
     try{
         const user = await User.findById(req.user._id);
         const followings = user.followings
-        console.log(followings)
         res.send(followings)
     }
     catch(error){
@@ -55,4 +53,18 @@ const follow = async (req,res)=>{
     }
 }
 
-module.exports = {getUsers,getFollowing,follow}
+const getOtherBooks = async (req,res)=>{
+    try{
+        const user = await User.findById(req.user._id);
+        const poster = await User.findById(req.body.poster_id)
+
+        const books = poster.books
+        res.send(books)
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
+}
+
+module.exports = {getUsers,getFollowing,follow,getOtherBooks}
