@@ -30,10 +30,6 @@ const getMyBooks = async (req,res) => {
     res.send(user.books)
 }
 
-const getUserById = async (req,res) => {
-    const user = await User.findById(req.body.user_id)
-    console.log(user)
-    res.send(user)
-}
+
 
 module.exports = {shareBook,getMyBooks,getUserById}
