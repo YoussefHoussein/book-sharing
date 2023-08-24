@@ -3,9 +3,10 @@ import axios from 'axios'
 import './style.css'
 import {AiOutlinePlus} from "react-icons/ai"
 import UserBar from '../userBar'
-const SideBar = ({openProfile,openCreate}) => {
+const SideBar = ({openProfile,openCreate,onUserClick }) => {
   const [users_names,setUserName] = useState([])
   const [following_names,setFollowingName] = useState([])
+
   useEffect(()=>{
     const getUsers = async () => {
       try{
@@ -46,6 +47,10 @@ const SideBar = ({openProfile,openCreate}) => {
 
   };
 
+  const handleUserBarClick = (user_id) => {
+    onUserClick(user_id)
+  };
+  
   return (
     <div className='sideBar flex column center spaceEvenly'>
       <div className='flex center'>
@@ -56,7 +61,7 @@ const SideBar = ({openProfile,openCreate}) => {
         {
         users_names.map((user) => (
             <div key={user._id} className="user-bar-sidebar flex center">
-              <UserBar id={user._id} name={user.name} following={false} onFollowToggle={()=>handleFollowToggle(user._id)}/>
+              <UserBar id={user._id} name={user.name} following={false} onFollowToggle={()=>handleFollowToggle(user._id)} onUserNameClicked={() => handleUserBarClick(user._id)}/>
             </div>
           ))}
       </div>
@@ -65,7 +70,7 @@ const SideBar = ({openProfile,openCreate}) => {
         {
         following_names.map((user) => (
             <div key={user._id} className="user-bar-sidebar flex center">
-              <UserBar id={user._id} name={user.name} following={true} onFollowToggle={()=>handleFollowToggle(user._id)}/>
+              <UserBar id={user._id} name={user.name} following={true} onFollowToggle={()=>handleFollowToggle(user._id)} onUserNameClicked={() => handleUserBarClick(user._id)}/>
             </div>
           ))}
       </div>

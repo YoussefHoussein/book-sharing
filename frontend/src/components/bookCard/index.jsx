@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import './style.css'
-const BookCard = ({name,author,review,picture}) => {
+import {AiFillHeart,AiOutlineHeart} from 'react-icons/ai'
+const BookCard = ({user_id = null,name,author,review,picture}) => {
     const imageContainerRef = useRef(null);
 
     if (imageContainerRef.current) {
@@ -12,7 +13,8 @@ const BookCard = ({name,author,review,picture}) => {
         <div className="card-text name">{name}</div>
         <div className="card-text author">{author}</div>
         <div className="card-text review">{review}</div>
-
+        <div className='card-text user-name'>{user_id ? user_name : ""}</div>
+        <div className="card-text heart">{user_id ? <AiOutlineHeart /> : ""}</div>
     </div>
   )
 }
