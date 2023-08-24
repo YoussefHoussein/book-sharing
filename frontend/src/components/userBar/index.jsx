@@ -22,8 +22,8 @@ const UserBar = ({id,name,following,onFollowToggle,onUserNameClicked}) => {
   }
   return (
     <div className='userbar flex center'>
-        <div className="userbar-name" onClick={onUserNameClicked}>{name}</div>
-        <div onClick={handleFollow}>{following ? <AiFillLike /> : <AiOutlineLike />}</div>
+        <div className="userbar-name pointer" onClick={onUserNameClicked}>{name}</div>
+        <div className='pointer' onClick={handleFollow}>{following ? <AiFillLike /> : <AiOutlineLike />}</div>
         
     </div>
   )

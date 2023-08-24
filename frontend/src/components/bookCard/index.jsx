@@ -13,8 +13,7 @@ const BookCard = ({user_id = null,name,author,review,picture}) => {
         <div className="card-text name">{name}</div>
         <div className="card-text author">{author}</div>
         <div className="card-text review">{review}</div>
-        <div className='card-text user-name'>{user_id ? user_name : ""}</div>
-        <div className="card-text heart">{user_id ? <AiOutlineHeart /> : ""}</div>
+        <div className="card-text heart pointer">{user_id ? <AiOutlineHeart /> : ""}</div>
     </div>
   )
 }
