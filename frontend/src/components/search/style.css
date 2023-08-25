@@ -1,0 +1,14 @@
+.search-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.search-input-element{
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+
+}
+::placeholder{
+    color: black;
+}
