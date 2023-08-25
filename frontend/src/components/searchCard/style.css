@@ -6,3 +6,6 @@
     overflow: hidden;
     border: 1px solid black;
 }
+.search-card-container{
+    margin-top: 10px;
+}
