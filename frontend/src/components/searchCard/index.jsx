@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import './style.css'
 const SearchCard = ({name,author,picture}) => {
-
+    console.log(name)
     const pictureHolder = useRef(null);
     if (pictureHolder.current) {
         pictureHolder.current.style.backgroundImage = `url(${picture})`;

@@ -10,9 +10,9 @@ const SearchList = ({isOpen,handleCloseAddModal,results}) => {
         className={"modal"}
     >
         {
-            results.map((result)=>{
+            results.map((result)=>(
                 <SearchCard name={result.name} author={result.author} picture={result.picture}/>
-            })
+            ))
         }
     </Modal>
   )
